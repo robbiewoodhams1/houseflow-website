@@ -15,7 +15,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="w-full p-6 bg-[#0F2C76]">
+    <header className="w-full p-6 bg-[#9F98FF]">
       <nav className="flex flex-row justify-between items-center">
         {/* Desktop Nav */}
         <div className="hidden md:flex flex-row gap-10">

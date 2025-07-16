@@ -69,7 +69,7 @@ export default function FAQsPage() {
 
 
   return(
-    <div className="w-full flex flex-col bg-blue-400 items-center gap-20">
+    <div className="w-full flex flex-col bg-blue-200 items-center gap-20">
       <Header />
 
       <h2 className='text-blue-950 text-3xl font-bold'>Frequently Asked Questions</h2>

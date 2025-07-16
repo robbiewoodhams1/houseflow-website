@@ -1,6 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import TikTok from '@/assets/tiktok.svg';
+import Instagram from '@/assets/instagram.svg';
+import Facebook from '@/assets/facebook.svg';
+
 
 export default function Footer() {
 
@@ -20,7 +24,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="w-full p-10 bg-[#0F2C76] flex flex-col items-center gap-20">
+    <footer className="w-full p-10 bg-[#9F98FF] flex flex-col items-center gap-20">
 
       <div className="w-full flex flex-col md:flex-row justify-between">
         <nav className="flex flex-row gap-20 items-start">
@@ -45,7 +49,7 @@ export default function Footer() {
         </nav>
 
         <div className="w-full max-w-xl p-8 bg-white rounded-2xl shadow-md md:mt-0 mt-20">
-          <h2 className="text-3xl font-bold text-[#001F4D] mb-6 text-center">Contact Us</h2>
+          <h2 className="text-3xl font-bold text-[#9F98FF] mb-6 text-center">Contact Us</h2>
           
           <form className="flex flex-col gap-5">
             <div>
@@ -86,13 +90,23 @@ export default function Footer() {
 
             <button
               type="submit"
-              className="bg-[#001F4D] text-white font-semibold py-3 rounded-full hover:bg-blue-700 transition"
+              className="bg-[#9F98FF] text-white font-semibold py-3 rounded-full hover:bg-blue-700 transition"
             >
               Send Message
             </button>
           </form>
         </div>
+      </div>
 
+      <div className="w-full flex flex-row items-center justify-center gap-10">
+        {[{ name: 'TikTok', href: '/FAQs', Icon: TikTok },
+          { name: 'Instagram', href: '/privacy', Icon: Instagram },
+          { name: 'Facebook', href: '/terms', Icon: Facebook }]
+          .map(({ name, href, Icon }) => (
+            <Link key={name} href={href}>
+              <Icon className="w-12 h-12 fill-white hover:fill-blue-300 transition duration-300" />
+            </Link>
+        ))}
       </div>
 
       <div className="w-full flex md:flex-row flex-col justify-around items-center gap-10">
@@ -100,7 +114,7 @@ export default function Footer() {
           href="/signin"
           className="text-white text-md hover:underline cursor-pointer"
         >
-          <h3>&copy; 2025 ClassFlow. All rights reserved.</h3>
+          <h3>&copy; 2025 HouseFlow. All rights reserved.</h3>
         </a>
         <a 
           href="/signin"
