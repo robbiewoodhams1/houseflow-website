@@ -6,48 +6,49 @@ import Image3 from '@/public/splash/At the bathroom-pana.png';
 export default function TestimonialsSection() {
   const TestimonialCards = [
     {
-      name: 'Joe Woodhams',
-      school: 'Knole Academy',
+      name: 'Emma Hounslow',
+      info: 'University Student',
       description:
-        "Instantly adapt any lesson or resource to match your students' reading level. Just paste your content, select a reading age, and let AI simplify the text — with options to bold keywords, add glossaries, and more.",
+        "HouseFlow makes it super clear who’s actually doing their chores. No more guessing or arguments as it keeps everyone on track.",
       image: Image1,
     },
     {
-      name: 'Jane Doe',
-      school: 'Oakfield School',
+      name: 'Daisy Taylor-Jones',
+      info: 'University Student',
       description:
-        "This tool has revolutionised how I prepare materials. My students are more engaged, and I'm saving hours every week.",
+        "Before HouseFlow, our flat was a mess. Now we’ve got shared tasks, reminders, and even know when the bathroom’s free. It’s a game changer.",
       image: Image2,
     },
     {
-      name: 'Emily Smith',
-      school: 'Greenhill Primary',
+      name: 'Billal Shah',
+      info: 'University Student',
       description:
-        "I love how easy it is to customise content for different ability levels. It’s like having a teaching assistant powered by AI.",
+        "It’s helped our house work like a team. We all know what needs doing and when. Makes the vibe at home way better.",
       image: Image3,
     },
-        {
-      name: 'Joe Woodhams',
-      school: 'Knole Academy',
+    {
+      name: 'Robbie Woodhams',
+      info: 'Large Household Father',
       description:
-        "Instantly adapt any lesson or resource to match your students' reading level. Just paste your content, select a reading age, and let AI simplify the text — with options to bold keywords, add glossaries, and more.",
+        "With a big household, it’s easy for things to fall apart. HouseFlow keeps everyone accountable and makes sure no one’s slacking.",
       image: Image1,
     },
     {
-      name: 'Jane Doe',
-      school: 'Oakfield School',
+      name: 'Michelle Decoine',
+      info: 'Large Household Mother',
       description:
-        "This tool has revolutionised how I prepare materials. My students are more engaged, and I'm saving hours every week.",
+        "Now I don’t have to remind everyone a dozen times. Tasks get ticked off, and we all know who’s pulling their weight. Love it.",
       image: Image2,
     },
     {
-      name: 'Emily Smith',
-      school: 'Greenhill Primary',
+      name: 'Ryan Christmann-Cooper',
+      info: 'University Student',
       description:
-        "I love how easy it is to customise content for different ability levels. It’s like having a teaching assistant powered by AI.",
+        "I used to do most of the cleaning. With HouseFlow, the workload's actually shared. It keeps things fair and clean.",
       image: Image3,
     },
   ];
+
 
   return (
     <div className="bg-white min-h-screen md:px-20 py-20 px-5 flex flex-col items-center gap-20">
@@ -58,16 +59,16 @@ export default function TestimonialsSection() {
           <TestimonialCard
             key={index}
             name={card.name}
-            school={card.school}
+            info={card.info}
             image={card.image}
             description={card.description}
           />
         ))}
       </div>
 
-      <h3 className="text-xl text-[#001F4D] font-semibold cursor-pointer hover:text-blue-700 mt-10">
+      {/* <h3 className="text-xl text-[#001F4D] font-semibold cursor-pointer hover:text-blue-700 mt-10">
         Explore all Testimonials
-      </h3>
+      </h3> */}
     </div>
   );
 }
