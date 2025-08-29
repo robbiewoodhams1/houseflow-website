@@ -46,7 +46,7 @@ function ResetPasswordInner() {
             type="password"
             placeholder="New password"
             className="
-                p-2 border rounded w-64 mb-4
+                p-3 border rounded w-64 mb-5
                 text-black        
                 placeholder-gray-500 
             "
@@ -56,7 +56,7 @@ function ResetPasswordInner() {
 
           <button
             onClick={handleReset}
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            className="bg-[#9F98FF] text-white px-5 py-3 rounded-full hover:bg-[#4f47b8]"
           >
             Save New Password
           </button>
