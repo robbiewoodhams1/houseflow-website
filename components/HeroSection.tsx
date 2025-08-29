@@ -25,7 +25,7 @@ export default function HeroSection() {
                 priority
               />
             </a>
-            <a href="/signup" className="relative w-[160px] h-[50px]">
+            <a href="https://apps.apple.com/us/app/houseflow-app/id6747577123" className="relative w-[160px] h-[50px]">
               <Image
                 src={Apple}
                 alt="App Store"
