@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 
@@ -8,8 +8,22 @@ function ResetPasswordInner() {
   const searchParams = useSearchParams();
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [type, setType] = useState<string | null>(null);
 
-  const type = searchParams.get("type");
+  useEffect(() => {
+    // 1. Try query params (?type=recovery)
+    const queryType = searchParams.get("type");
+    if (queryType) {
+      setType(queryType);
+      return;
+    }
+
+    // 2. Try hash fragment (#access_token=...&type=recovery)
+    const hash = window.location.hash;
+    if (hash.includes("type=recovery")) {
+      setType("recovery");
+    }
+  }, [searchParams]);
 
   const handleReset = async () => {
     if (!password) return setMessage("Please enter a password");
