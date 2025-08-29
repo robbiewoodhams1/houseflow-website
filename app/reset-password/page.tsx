@@ -42,13 +42,18 @@ function ResetPasswordInner() {
       <h1 className="text-2xl font-bold mb-4 text-black">Reset Password</h1>
       {type === "recovery" ? (
         <>
-          <input
+            <input
             type="password"
             placeholder="New password"
-            className="p-2 border rounded w-64 mb-4"
+            className="
+                p-2 border rounded w-64 mb-4
+                text-black        
+                placeholder-gray-500 
+            "
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-          />
+            />
+
           <button
             onClick={handleReset}
             className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
