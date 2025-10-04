@@ -1,12 +1,45 @@
 'use client';
 
+import { useState } from "react";
 import Link from 'next/link';
 import TikTok from '@/assets/tiktok.svg';
 import Instagram from '@/assets/instagram.svg';
-import Facebook from '@/assets/facebook.svg';
+
 
 
 export default function Footer() {
+
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    setSuccess(false);
+
+    const form = e.currentTarget;
+    const data = {
+      name: (form.elements.namedItem("name") as HTMLInputElement).value,
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+    };
+
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    setLoading(false);
+
+    if (res.ok) {
+      setSuccess(true);
+      form.reset();
+    } else {
+      alert("Something went wrong. Please try again.");
+    }
+  };
+
 
   const navItems = [
     { name: 'Home', href: '/#home' },
@@ -51,49 +84,71 @@ export default function Footer() {
         <div className="w-full max-w-xl p-8 bg-white rounded-2xl shadow-md md:mt-0 mt-20">
           <h2 className="text-3xl font-bold text-[#9F98FF] mb-6 text-center">Contact Us</h2>
           
-          <form className="flex flex-col gap-5">
+          <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-[#9F98FF]"
+              >
+                Name
+              </label>
               <input
                 type="text"
                 id="name"
                 name="name"
-                className="mt-1 block w-full border border-gray-300 rounded-md p-3 focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 block w-full border border-gray-300 rounded-md p-3 focus:ring-[#9F98FF] focus:border-[#9F98FF] placeholder-gray-400 text-black"
                 placeholder="Your Name"
                 required
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-[#9F98FF]"
+              >
+                Email
+              </label>
               <input
                 type="email"
                 id="email"
                 name="email"
-                className="mt-1 block w-full border border-gray-300 rounded-md p-3 focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 block w-full border border-gray-300 rounded-md p-3 focus:ring-[#9F98FF] focus:border-[#0F2C76 placeholder-gray-400 text-black]"
                 placeholder="you@example.com"
                 required
               />
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message</label>
+              <label
+                htmlFor="message"
+                className="block text-sm font-medium text-[#9F98FF]"
+              >
+                Message
+              </label>
               <textarea
                 id="message"
                 name="message"
                 rows={5}
-                className="mt-1 block w-full border border-gray-300 rounded-md p-3 focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 block w-full border border-gray-300 rounded-md p-3 focus:ring-[#9F98FF] focus:border-[#9F98FF] placeholder-gray-400 text-black"
                 placeholder="Write your message..."
                 required
               />
             </div>
 
-            <button
-              type="submit"
-              className="bg-[#9F98FF] text-white font-semibold py-3 rounded-full hover:bg-blue-700 transition"
-            >
-              Send Message
-            </button>
+          <button
+            type="submit"
+            disabled={loading}
+            className="bg-[#9F98FF] font-semibold py-3 rounded-full hover:bg-pink-900 transition disabled:opacity-50"
+          >
+            {loading ? "Sending..." : "Send Message"}
+          </button>
+
+          {success && (
+            <p className="text-green-700 text-center mt-2">
+              Your message has been sent!
+            </p>
+          )}
           </form>
         </div>
       </div>
