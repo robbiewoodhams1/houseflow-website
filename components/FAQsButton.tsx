@@ -19,23 +19,26 @@ export default function FAQsButton({ items }: FAQsProps) {
   };
 
   return (
-    <div className="md:w-[70%] w-[90%] pb-40 space-y-4 items-center">
+    <div className="w-full flex flex-col gap-3">
       {items?.map((item, index) => (
         <div
           key={index}
-          className=" rounded-lg p-4 bg-white shadow-sm"
+          className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden"
         >
           <button
-            className="w-full text-left flex gap-10 items-center"
+            className="w-full text-left flex items-center justify-between gap-4 px-6 py-5 cursor-pointer hover:bg-[#F8F7FF] transition-colors"
             onClick={() => toggleIndex(index)}
           >
-            <span className="text-gray-600">
-              {openIndex === index ? <ChevronUpIcon height={24} width={24} color={'black'}/> : <ChevronDownIcon height={24} width={24} color={'black'}/>}
-            </span>
-            <h3 className="text-lg font-semibold text-gray-800">{item.question}</h3>
+            <h3 className="text-base font-semibold text-[#1E1B4B]">{item.question}</h3>
+            {openIndex === index
+              ? <ChevronUpIcon className="h-5 w-5 text-[#7C74F5] flex-shrink-0" />
+              : <ChevronDownIcon className="h-5 w-5 text-gray-400 flex-shrink-0" />
+            }
           </button>
           {openIndex === index && (
-            <p className="mt-2 text-gray-700 text-base">{item.answer}</p>
+            <div className="px-6 pb-5 border-t border-gray-50">
+              <p className="text-gray-600 text-sm leading-relaxed pt-4">{item.answer}</p>
+            </div>
           )}
         </div>
       ))}

@@ -1,5 +1,4 @@
 import type { StaticImageData } from 'next/image';
-import Image from "next/image";
 
 type TestimonialCardProps = {
   image: StaticImageData;
@@ -8,24 +7,27 @@ type TestimonialCardProps = {
   description: string;
 };
 
-export default function TestimonialCard({ image, name, info, description }: TestimonialCardProps) {
+export default function TestimonialCard({ name, info, description }: TestimonialCardProps) {
+  const initials = name
+    .split(' ')
+    .map((n) => n[0])
+    .join('')
+    .slice(0, 2)
+    .toUpperCase();
+
   return (
-    <div className="bg-blue-300 rounded-2xl p-6 py-10 w-full max-w-md shadow-md flex flex-col gap-4">
-      <div className="flex flex-row items-center gap-5 mb-4">
-        <Image
-          src={image}
-          alt={name}
-          width={80}
-          height={80}
-          className="rounded-full object-cover"
-        />
-        <div className="flex flex-col">
-          <h4 className="text-2xl font-semibold text-[#0F2C76]">{name}</h4>
-          <h5 className="text-xl font-semibold text-[#0F2C76]">{info}</h5>
+    <div className="bg-white rounded-2xl p-6 flex flex-col gap-4 border border-gray-100 shadow-sm hover:shadow-2xl hover:scale-102 transition-all">
+      <div className="text-4xl text-[#9F98FF] font-serif leading-none select-none">&ldquo;</div>
+      <p className="text-gray-600 text-sm leading-relaxed flex-1">{description}</p>
+      <div className="flex items-center gap-3 pt-3 border-t border-gray-50">
+        <div className="w-9 h-9 rounded-full bg-[#9F98FF] flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+          {initials}
+        </div>
+        <div>
+          <p className="text-sm font-semibold text-[#1E1B4B]">{name}</p>
+          <p className="text-xs text-gray-400">{info}</p>
         </div>
       </div>
-
-      <p className="text-[#333] text-base">{description}</p>
     </div>
   );
 }

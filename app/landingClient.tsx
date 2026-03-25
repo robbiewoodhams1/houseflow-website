@@ -1,11 +1,13 @@
 import {
   Header,
   HeroSection,
+  StatsSection,
   FeaturesSection,
   TestimonialsSection,
   AboutSection,
-  Footer
-} from '@/components'
+  DownloadCTASection,
+  Footer,
+} from '@/components';
 
 export default function LandingClient() {
   return (
@@ -15,6 +17,8 @@ export default function LandingClient() {
       <section id="home">
         <HeroSection />
       </section>
+
+      <StatsSection />
 
       <section id="features">
         <FeaturesSection />
@@ -27,6 +31,8 @@ export default function LandingClient() {
       <section id="about">
         <AboutSection />
       </section>
+
+      <DownloadCTASection />
 
       <section id="contact">
         <Footer />
